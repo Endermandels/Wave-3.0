@@ -2,7 +2,7 @@ extends SpawnTargetComponent
 class_name EnemySpawnTarget
 
 const ENEMY_STATS: Array[EnemyStats] = [
-	preload("res://resources/enemy_stats.tres")
+	preload("res://resources/stats/basic_enemy_stats.tres")
 ]
 
 func update(_delta: float) -> void:

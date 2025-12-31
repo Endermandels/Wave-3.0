@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://du7sn0bld2043"]
 
-[ext_resource type="Script" uid="uid://iqwjcl7ixjxb" path="res://scripts/resources/enemy_stats.gd" id="1_umnsp"]
+[ext_resource type="Script" uid="uid://cnb7q88q70uvy" path="res://scripts/resources/enemy_stats.gd" id="1_n2w4q"]
 
 [resource]
 resource_local_to_scene = true
-script = ExtResource("1_umnsp")
+script = ExtResource("1_n2w4q")
 speed = 400.0
 start_speed = 400.0
