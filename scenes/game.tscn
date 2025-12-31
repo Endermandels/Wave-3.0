@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu5agmlvxhed6"]
+[gd_scene load_steps=7 format=3 uid="uid://bu5agmlvxhed6"]
 
 [ext_resource type="PackedScene" uid="uid://bpwpw5m7q6su0" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://u6v5i8uns6d5" path="res://scripts/game.gd" id="1_yqjtg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(658, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+size = Vector2(658, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(20, 378)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(20, 378)
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_yqjtg")
@@ -15,3 +27,36 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(320, 192)
+
+[node name="TopBoundary" type="RigidBody2D" parent="."]
+collision_mask = 0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBoundary"]
+position = Vector2(319, -8)
+shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="BottomBoundary" type="RigidBody2D" parent="."]
+position = Vector2(0, 368)
+collision_mask = 0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary"]
+position = Vector2(319, 0)
+shape = SubResource("RectangleShape2D_yqjtg")
+
+[node name="LeftBoundary" type="RigidBody2D" parent="."]
+collision_mask = 0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary"]
+position = Vector2(-8, 179)
+shape = SubResource("RectangleShape2D_lbhrr")
+
+[node name="RightBoundary" type="RigidBody2D" parent="."]
+collision_mask = 0
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary"]
+position = Vector2(648, 176)
+shape = SubResource("RectangleShape2D_iywne")
