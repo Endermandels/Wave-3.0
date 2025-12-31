@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6ppvnuqsbp4r"]
+
+[ext_resource type="Script" uid="uid://bvn1si28sloig" path="res://components/motor_component.gd" id="1_7tr0j"]
+
+[node name="MotorComponent" type="Node"]
+script = ExtResource("1_7tr0j")

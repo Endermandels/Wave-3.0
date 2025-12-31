@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbnap2wejof4d"]
+
+[ext_resource type="Script" uid="uid://drbfxu305aa37" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://iqwjcl7ixjxb" path="res://scripts/resources/enemy_stats.gd" id="2_4ra3w"]
+[ext_resource type="PackedScene" uid="uid://b6ppvnuqsbp4r" path="res://components/motor_component.tscn" id="4_5uy6h"]
+
+[sub_resource type="Resource" id="Resource_5uy6h"]
+resource_local_to_scene = true
+script = ExtResource("2_4ra3w")
+metadata/_custom_type_script = "uid://iqwjcl7ixjxb"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
+size = Vector2(8, 8)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("motor_cmp")]
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_7p1mj")
+motor_cmp = NodePath("MotorComponent")
+enemy_stats = SubResource("Resource_5uy6h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.67, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4ra3w")
+
+[node name="MotorComponent" parent="." instance=ExtResource("4_5uy6h")]

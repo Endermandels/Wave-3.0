@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://c2vg3x4lo0pi4" path="res://scripts/resources/game_state.gd" id="1_ljf37"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_ljf37")
