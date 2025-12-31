@@ -9,19 +9,19 @@ class_name HurtboxComponent
 
 var current_hitbox: HitboxComponent = null
 
-func update() -> void:
-	if current_hitbox and monitoring and invincible_on_hit:
-		monitoring = false
-		invincibility_timer.start()
-	elif not monitoring and invincibility_timer.is_stopped():
+func physics_update() -> void:
+	if not monitoring and invincibility_timer.is_stopped():
 		monitoring = true
 
-func physics_update() -> void:
 	if not monitoring: return
 
 	for hitbox: HitboxComponent in get_overlapping_areas():
 		if not current_hitbox or hitbox.priority > current_hitbox.priority:
 			current_hitbox = hitbox
+			
+	if current_hitbox and invincible_on_hit:
+		monitoring = false
+		invincibility_timer.start()
 
 func get_current_hitbox() -> HitboxComponent:
 	var res = current_hitbox

@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://vcrxyguctdxh"]
+[gd_scene load_steps=3 format=3 uid="uid://vcrxyguctdxh"]
 
 [ext_resource type="Script" uid="uid://bqor6me5518tx" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="PackedScene" uid="uid://bgftd3bhtyb46" path="res://components/health_bar_component.tscn" id="2_oo0fn"]
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("wave_label")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("wave_label", "health_bar_cmp")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
 script = ExtResource("1_ahhtf")
 wave_label = NodePath("WaveLabel")
+health_bar_cmp = NodePath("HealthBarComponent")
 
 [node name="WaveLabel" type="Label" parent="."]
 layout_mode = 0
@@ -17,3 +19,10 @@ offset_top = 8.0
 offset_right = 68.0
 offset_bottom = 31.0
 text = "Wave: 1"
+
+[node name="HealthBarComponent" parent="." instance=ExtResource("2_oo0fn")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 108.0
+offset_bottom = 60.0

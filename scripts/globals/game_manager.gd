@@ -1,6 +1,7 @@
 extends Node
 
 var game_state: GameState = GameState.new()
+var player_stats: PlayerStats = PlayerStats.new()
 
 var elapsed_time: float = 0.0
 
