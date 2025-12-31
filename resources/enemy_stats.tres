@@ -5,3 +5,5 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_umnsp")
+speed = 400.0
+start_speed = 400.0

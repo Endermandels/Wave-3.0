@@ -6,11 +6,9 @@ class_name Player
 @export var movement_cmp: MovementComponent
 
 func update() -> void:
-    pass
+	pass
 
-func physics_update() -> void:
-    input_cmp.update()
-    movement_cmp.handle_movement(self, input_cmp.input_vector)
-
-    move_and_slide()
-    GameManager.game_state.player_pos = global_position
+func physics_update(delta: float) -> void:
+	input_cmp.update()
+	movement_cmp.handle_movement(self, input_cmp.input_vector, delta)
+	GameManager.game_state.player_pos = global_position

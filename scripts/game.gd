@@ -21,5 +21,5 @@ func _process(delta: float) -> void:
 		spawn_target_cmp.delete_children()
 
 func _physics_process(delta: float) -> void:
-	player.physics_update()
+	player.physics_update(delta)
 	spawn_target_cmp.physics_update(delta)
