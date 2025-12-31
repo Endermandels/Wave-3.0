@@ -16,6 +16,9 @@ func _process(delta: float) -> void:
 	hud.update()
 	spawner_cmp.update(delta)
 	spawn_target_cmp.update(delta)
+	GameManager.update(delta)
+	if GameManager.game_state.is_new_wave():
+		spawn_target_cmp.delete_children()
 
 func _physics_process(delta: float) -> void:
 	player.physics_update()

@@ -73,7 +73,6 @@ shape = SubResource("RectangleShape2D_iywne")
 [node name="HUD" parent="." instance=ExtResource("3_lnu2h")]
 
 [node name="SpawnerComponent" parent="." node_paths=PackedStringArray("spawn_target") instance=ExtResource("6_p57ef")]
-spawn_rate = 369.457
 spawn_target = NodePath("../EnemySpawnTarget")
 spawnable_scene = ExtResource("4_lbhrr")
 
