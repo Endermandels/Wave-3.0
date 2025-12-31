@@ -13,3 +13,4 @@ func physics_update() -> void:
     movement_cmp.handle_movement(self, input_cmp.input_vector)
 
     move_and_slide()
+    GameManager.game_state.player_pos = global_position

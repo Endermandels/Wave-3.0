@@ -12,11 +12,13 @@ metadata/_custom_type_script = "uid://iqwjcl7ixjxb"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
 size = Vector2(8, 8)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("motor_cmp")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("motor_cmp", "enable_collision_timer", "collision_shape")]
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_7p1mj")
 motor_cmp = NodePath("MotorComponent")
+enable_collision_timer = NodePath("EnableCollisionTimer")
+collision_shape = NodePath("CollisionShape2D")
 enemy_stats = SubResource("Resource_5uy6h")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -37,3 +39,8 @@ color = Color(0.67, 0, 0, 1)
 shape = SubResource("RectangleShape2D_4ra3w")
 
 [node name="MotorComponent" parent="." instance=ExtResource("4_5uy6h")]
+
+[node name="EnableCollisionTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true

@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://u6v5i8uns6d5" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://vcrxyguctdxh" path="res://scenes/hud.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cbnap2wejof4d" path="res://scenes/enemy.tscn" id="4_lbhrr"]
-[ext_resource type="Script" uid="uid://iqwjcl7ixjxb" path="res://scripts/resources/enemy_stats.gd" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://q0knkowo6ust" path="res://components/spawner_component.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bwx8xlaq18mdw" path="res://scenes/enemy_spawn_target.tscn" id="7_u5sy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
 size = Vector2(658, 20)
@@ -18,16 +19,12 @@ size = Vector2(20, 378)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(20, 378)
 
-[sub_resource type="Resource" id="Resource_p57ef"]
-resource_local_to_scene = true
-script = ExtResource("5_iywne")
-metadata/_custom_type_script = "uid://iqwjcl7ixjxb"
-
-[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "hud", "enemy")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "hud", "spawner_cmp", "spawn_target_cmp")]
 script = ExtResource("1_yqjtg")
 player = NodePath("Player")
 hud = NodePath("HUD")
-enemy = NodePath("Enemy")
+spawner_cmp = NodePath("SpawnerComponent")
+spawn_target_cmp = NodePath("EnemySpawnTarget")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 640.0
@@ -75,6 +72,123 @@ shape = SubResource("RectangleShape2D_iywne")
 
 [node name="HUD" parent="." instance=ExtResource("3_lnu2h")]
 
-[node name="Enemy" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(184, 128)
-enemy_stats = SubResource("Resource_p57ef")
+[node name="SpawnerComponent" parent="." node_paths=PackedStringArray("spawn_target") instance=ExtResource("6_p57ef")]
+spawn_rate = 369.457
+spawn_target = NodePath("../EnemySpawnTarget")
+spawnable_scene = ExtResource("4_lbhrr")
+
+[node name="Node2D" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(0, -64)
+
+[node name="Node2D2" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(64, -64)
+
+[node name="Node2D3" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(128, -64)
+
+[node name="Node2D4" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(192, -64)
+
+[node name="Node2D5" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(256, -64)
+
+[node name="Node2D6" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(320, -64)
+
+[node name="Node2D7" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(384, -64)
+
+[node name="Node2D8" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(448, -64)
+
+[node name="Node2D9" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(512, -64)
+
+[node name="Node2D10" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(576, -64)
+
+[node name="Node2D11" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(640, -64)
+
+[node name="Node2D12" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(704, -64)
+
+[node name="Node2D13" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(-64, -64)
+
+[node name="Node2D14" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(0, 408)
+
+[node name="Node2D15" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(64, 408)
+
+[node name="Node2D16" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(128, 408)
+
+[node name="Node2D17" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(192, 408)
+
+[node name="Node2D18" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(256, 408)
+
+[node name="Node2D19" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(320, 408)
+
+[node name="Node2D20" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(384, 408)
+
+[node name="Node2D21" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(448, 408)
+
+[node name="Node2D22" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(512, 408)
+
+[node name="Node2D23" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(576, 408)
+
+[node name="Node2D24" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(640, 408)
+
+[node name="Node2D25" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(704, 408)
+
+[node name="Node2D26" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(-64, 408)
+
+[node name="Node2D27" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(-64, 320)
+
+[node name="Node2D28" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(-64, 256)
+
+[node name="Node2D29" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(-64, 192)
+
+[node name="Node2D30" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(-64, 128)
+
+[node name="Node2D31" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(-64, 64)
+
+[node name="Node2D32" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(-64, 0)
+
+[node name="Node2D33" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(704, 0)
+
+[node name="Node2D34" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(704, 64)
+
+[node name="Node2D35" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(704, 128)
+
+[node name="Node2D36" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(704, 192)
+
+[node name="Node2D37" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(704, 256)
+
+[node name="Node2D38" type="Node2D" parent="SpawnerComponent"]
+position = Vector2(704, 320)
+
+[node name="EnemySpawnTarget" parent="." instance=ExtResource("7_u5sy4")]
