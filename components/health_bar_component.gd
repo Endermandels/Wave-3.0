@@ -6,8 +6,9 @@ class_name HealthBarComponent
 @export var porgress_color_rect: ColorRect
 
 func _ready() -> void:
-    porgress_color_rect.size.x = value
+    set_progress(100)
 
+## amount as a percentage
 func set_progress(amount: float) -> void:
     value = amount
-    porgress_color_rect.size.x = value
+    porgress_color_rect.size.x = under_color_rect.size.x * value / 100

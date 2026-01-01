@@ -7,6 +7,7 @@ class_name Player
 @export var anim_cmp: AnimationComponent
 @export var hurtbox_cmp: HurtboxComponent
 @export var color_rect: ColorRect
+@export var health_bar_cmp: HealthBarComponent
 
 @onready var stats: PlayerStats = GameManager.player_stats
 
@@ -16,9 +17,11 @@ func update() -> void:
 	
 	if stats.is_dead():
 		color_rect.hide()
+		health_bar_cmp.hide()
 		return
 	
 	anim_cmp.flash(not hurtbox_cmp.monitoring)
+	health_bar_cmp.set_progress((float(stats.hp) / stats.max_hp) * 100)
 
 func physics_update(delta: float) -> void:
 	input_cmp.update()
