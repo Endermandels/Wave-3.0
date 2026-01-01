@@ -7,6 +7,12 @@ class_name GameState
 
 var player_pos: Vector2 = Vector2.ZERO
 var new_wave: bool = true
+var elapsed_time: float = 0.0 ## in seconds
+
+func update(delta: float) -> void:
+    if elapsed_time >= wave_length * wave:
+        next_wave()
+    elapsed_time += delta
 
 func next_wave() -> void:
     wave += 1

@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt0yin3gghxn5"]
+
+[ext_resource type="Script" uid="uid://dtoiseg4g1807" path="res://scripts/lose_screen.gd" id="1_uglf1"]
+[ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_1n1m7"]
+
+[node name="LoseScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp")]
+script = ExtResource("1_uglf1")
+wave_label = NodePath("VBoxContainer/WaveLabel")
+time_label = NodePath("VBoxContainer/TimeLabel")
+scene_transition_cmp = NodePath("SceneTransitionComponent")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.021044428, 0.009002825, 0.06439079, 1)
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 168.0
+offset_top = 96.0
+offset_right = 472.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "Game Over"
+
+[node name="WaveLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "        Wave: 1"
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "        Time: 323 s"
+
+[node name="SceneTransitionComponent" parent="." instance=ExtResource("2_1n1m7")]
+type = 1
+color = Color(0.7411765, 0, 0, 1)
