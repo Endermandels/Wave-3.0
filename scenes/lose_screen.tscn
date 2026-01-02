@@ -44,8 +44,8 @@ layout_mode = 2
 text = "        Time: 323 s"
 
 [node name="SceneTransitionComponent" parent="." instance=ExtResource("2_1n1m7")]
+color = Color(0.93, 0.1209, 0.1209, 1)
 type = 1
-color = Color(0.7411765, 0, 0, 1)
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_73mov")

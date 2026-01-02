@@ -8,12 +8,18 @@ class_name Game
 @export var spawn_target_cmp: SpawnTargetComponent
 @export var lose_scene_transition_cmp: SceneTransitionComponent
 @export var win_scene_transition_cmp: SceneTransitionComponent
+@export var scene_transition_cmp: SceneTransitionComponent
 
 @export_group("Resources")
 @export var lose_scene: PackedScene
 @export var win_scene: PackedScene
 
+func _ready() -> void:
+	scene_transition_cmp.transition_in()
+
 func _process(delta: float) -> void:
+	scene_transition_cmp.update(delta)
+	if scene_transition_cmp.transitioning: return
 	player.update()
 	hud.update()
 	if not GameManager.game_state.player_won:
@@ -30,5 +36,6 @@ func _process(delta: float) -> void:
 		win_scene_transition_cmp.update(delta)
 
 func _physics_process(delta: float) -> void:
+	if scene_transition_cmp.transitioning: return
 	player.physics_update(delta)
 	spawn_target_cmp.physics_update(delta)

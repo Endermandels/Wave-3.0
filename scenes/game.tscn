@@ -23,7 +23,7 @@ size = Vector2(20, 378)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(20, 378)
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "hud", "spawner_cmp", "spawn_target_cmp", "lose_scene_transition_cmp", "win_scene_transition_cmp")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "hud", "spawner_cmp", "spawn_target_cmp", "lose_scene_transition_cmp", "win_scene_transition_cmp", "scene_transition_cmp")]
 script = ExtResource("1_yqjtg")
 player = NodePath("Player")
 hud = NodePath("HUD")
@@ -31,6 +31,7 @@ spawner_cmp = NodePath("SpawnerComponent")
 spawn_target_cmp = NodePath("EnemySpawnTarget")
 lose_scene_transition_cmp = NodePath("LoseSceneTransitionComponent")
 win_scene_transition_cmp = NodePath("WinSceneTransitionComponent")
+scene_transition_cmp = NodePath("SceneTransitionComponent")
 lose_scene = ExtResource("2_gee14")
 win_scene = ExtResource("3_0tnpc")
 
@@ -201,12 +202,16 @@ position = Vector2(704, 320)
 [node name="EnemySpawnTarget" parent="." instance=ExtResource("7_u5sy4")]
 
 [node name="LoseSceneTransitionComponent" parent="." instance=ExtResource("7_gee14")]
+color = Color(0.92941177, 0.12156863, 0.12156863, 1)
 delay = 5.0
-color = Color(0.74, 0, 0, 1)
 
 [node name="WinSceneTransitionComponent" parent="." instance=ExtResource("7_gee14")]
+color = Color(0.09803922, 0.8784314, 0.1764706, 1)
 delay = 5.0
-color = Color(0.096800014, 0.88, 0.17511995, 1)
+
+[node name="SceneTransitionComponent" parent="." instance=ExtResource("7_gee14")]
+duration = 3.0
+type = 2
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_vtaks")

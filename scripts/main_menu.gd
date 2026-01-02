@@ -7,6 +7,10 @@ class_name MainMenu
 @export var credits_btn: Button
 @export var quit_btn: Button
 @export var scene_transition_cmp: SceneTransitionComponent
+@export var game_scene_transition_cmp: SceneTransitionComponent
+
+@export_group("Resources")
+@export var game_scene: PackedScene
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("ui_up") or 
@@ -23,3 +27,13 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	scene_transition_cmp.update(delta)
+	game_scene_transition_cmp.update(delta)
+	
+	if scene_transition_cmp.transitioning or game_scene_transition_cmp.transitioning: return
+	if play_btn.button_pressed:
+		_on_play_button_pressed()
+	if quit_btn.button_pressed:
+		get_tree().quit()
+
+func _on_play_button_pressed() -> void:
+	game_scene_transition_cmp.transition_out(game_scene)

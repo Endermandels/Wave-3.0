@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjmh8vgmuqx71"]
+[gd_scene load_steps=4 format=3 uid="uid://cjmh8vgmuqx71"]
 
 [ext_resource type="Script" uid="uid://drl8uil2wgxhu" path="res://components/scene_transition_component.gd" id="1_508db"]
+[ext_resource type="Shader" uid="uid://ccer28xpdtrcd" path="res://components/scene_transition_component.gdshader" id="1_sjtwl"]
 
-[node name="SceneTransitionComponent" type="Control" node_paths=PackedStringArray("delay_timer")]
-layout_mode = 3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dcyy1"]
+shader = ExtResource("1_sjtwl")
+shader_parameter/transition_type = 2
+shader_parameter/progress = 0.0
+shader_parameter/screen_size = Vector2(640, 360)
+
+[node name="SceneTransitionComponent" type="ColorRect" node_paths=PackedStringArray("delay_timer")]
+material = SubResource("ShaderMaterial_dcyy1")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
