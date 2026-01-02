@@ -21,6 +21,7 @@ class_name MainMenu
 @export var game_scene: PackedScene
 
 var ui_keyboard_navigation: bool = false
+var default_focus: Control = null
 
 func _ready() -> void:
 	scene_transition_cmp.transition_in()
@@ -28,21 +29,31 @@ func _ready() -> void:
 	version_label.text= GameManager.meta_data.version
 	main_section.show()
 	credits_section.hide()
+	default_focus = play_btn
 
 func _process(delta: float) -> void:
+	# Mouse Focus
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		ui_keyboard_navigation = false
+
+		# Only release focus if not clicking on any button node
+		var hovered = get_viewport().gui_get_hovered_control()
+		if not (hovered is Button):
+			get_viewport().gui_release_focus()
+	
+	# Keyboard Focus
+	if (Input.is_action_pressed("ui_up") or 
+			Input.is_action_pressed("ui_down") or 
+			Input.is_action_pressed("ui_left") or 
+			Input.is_action_pressed("ui_right")):
+		# Select Play Button if no button is focused
+		ui_keyboard_navigation = true
+		var focused = get_viewport().gui_get_focus_owner()
+		if not focused and default_focus:
+			default_focus.grab_focus()
+
 	if main_section.visible:
 		# Main Section
-
-		# Keyboard Focus
-		if (Input.is_action_pressed("ui_up") or 
-				Input.is_action_pressed("ui_down") or 
-				Input.is_action_pressed("ui_left") or 
-				Input.is_action_pressed("ui_right")):
-			# Select Play Button if no button is focused
-			ui_keyboard_navigation = true
-			var focused = get_viewport().gui_get_focus_owner()
-			if not focused:
-				play_btn.grab_focus()
 
 		# Update Scene Transitions
 		scene_transition_cmp.update(delta)
@@ -56,21 +67,12 @@ func _process(delta: float) -> void:
 			_on_play_button_pressed()
 		if credits_btn.button_pressed:
 			_on_credits_button_pressed()
-		if quit_btn.button_pressed:
+		if quit_btn.button_pressed or Input.is_action_just_pressed("ui_cancel"):
 			get_tree().quit()
 	elif credits_section.visible:
 		# Credits Section
 
-		# Keyboard Focus
-		if (Input.is_action_pressed("ui_up") or 
-				Input.is_action_pressed("ui_down") or 
-				Input.is_action_pressed("ui_left") or 
-				Input.is_action_pressed("ui_right")):
-			# Select Credits Return Button if no button is focused
-			ui_keyboard_navigation = true
-			credits_return_btn.grab_focus()
-		
-		# Scroll Bar Input
+		# Scroll Bar Keyboard Input
 		if Input.is_action_pressed("ui_up"):
 			credits_scroll_container.get_v_scroll_bar().value -= 10
 		elif Input.is_action_pressed("ui_down"):
@@ -88,11 +90,13 @@ func _on_credits_button_pressed() -> void:
 	credits_section.show()
 	var credits_scroll_bar = credits_scroll_container.get_v_scroll_bar()
 	credits_scroll_bar.value = 0 # Reset scroll height
+	default_focus = credits_return_btn
 	if ui_keyboard_navigation:
 		credits_return_btn.grab_focus()
 
 func _on_credits_return_button_pressed() -> void:
 	main_section.show()
 	credits_section.hide()
+	default_focus = play_btn
 	if ui_keyboard_navigation:
 		play_btn.grab_focus()

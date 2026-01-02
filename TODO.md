@@ -3,7 +3,7 @@
 [] Main Menu
 x Play Button
 x Settings Button (does nothing)
-- Credits Button
+x Credits Button
 x Quit Button
 x Version Number
 x Author (me)
