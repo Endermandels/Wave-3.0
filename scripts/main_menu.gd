@@ -8,6 +8,8 @@ class_name MainMenu
 @export var quit_btn: Button
 @export var scene_transition_cmp: SceneTransitionComponent
 @export var game_scene_transition_cmp: SceneTransitionComponent
+@export var author_label: Label
+@export var version_label: Label
 
 @export_group("Resources")
 @export var game_scene: PackedScene
@@ -24,6 +26,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	scene_transition_cmp.transition_in()
+	author_label.text = GameManager.meta_data.author
+	version_label.text= GameManager.meta_data.version
 
 func _process(delta: float) -> void:
 	scene_transition_cmp.update(delta)

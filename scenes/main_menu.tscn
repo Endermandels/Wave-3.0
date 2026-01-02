@@ -5,16 +5,18 @@
 [ext_resource type="PackedScene" uid="uid://bu5agmlvxhed6" path="res://scenes/game.tscn" id="2_wu84c"]
 [ext_resource type="AudioStream" uid="uid://lx8sfyjmplsx" path="res://assets/sfx/Feral Angel Waltz .mp3" id="3_bqqt6"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("play_btn", "settings_btn", "credits_btn", "quit_btn", "scene_transition_cmp", "game_scene_transition_cmp")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("play_btn", "settings_btn", "credits_btn", "quit_btn", "scene_transition_cmp", "game_scene_transition_cmp", "author_label", "version_label")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_l6cm7")
-play_btn = NodePath("VBoxContainer/VBoxContainer/PlayButton")
-settings_btn = NodePath("VBoxContainer/VBoxContainer/SettingsButton")
-credits_btn = NodePath("VBoxContainer/VBoxContainer/CreditsButton")
-quit_btn = NodePath("VBoxContainer/VBoxContainer/QuitButton")
+play_btn = NodePath("MainContainer/ButtonsContainer/PlayButton")
+settings_btn = NodePath("MainContainer/ButtonsContainer/SettingsButton")
+credits_btn = NodePath("MainContainer/ButtonsContainer/CreditsButton")
+quit_btn = NodePath("MainContainer/ButtonsContainer/QuitButton")
 scene_transition_cmp = NodePath("SceneTransitionComponent")
 game_scene_transition_cmp = NodePath("GameSceneTransitionComponent")
+author_label = NodePath("MetadataContainer/AuthorLabel")
+version_label = NodePath("MetadataContainer/VersionLabel")
 game_scene = ExtResource("2_wu84c")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -24,7 +26,7 @@ offset_bottom = 360.0
 color = Color(0.021044428, 0.009002825, 0.06439079, 1)
 metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 164.5
 offset_top = 51.0
@@ -32,24 +34,24 @@ offset_right = 475.5
 offset_bottom = 347.0
 theme_override_constants/separation = 50
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="MainContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Wave 3.0"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="ButtonsContainer" type="VBoxContainer" parent="MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 9
 
-[node name="PlayButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MainContainer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../SettingsButton")
 focus_next = NodePath("../SettingsButton")
 focus_previous = NodePath("../QuitButton")
 text = "PLAY"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MainContainer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../PlayButton")
 focus_neighbor_bottom = NodePath("../CreditsButton")
@@ -57,7 +59,7 @@ focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../PlayButton")
 text = "SETTINGS"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="MainContainer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../SettingsButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
@@ -65,12 +67,32 @@ focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../SettingsButton")
 text = "CREDITS"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MainContainer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../CreditsButton")
 focus_next = NodePath("../PlayButton")
 focus_previous = NodePath("../CreditsButton")
 text = "QUIT"
+
+[node name="MetadataContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 328.0
+offset_right = 48.0
+offset_bottom = 352.0
+theme_override_constants/separation = 0
+
+[node name="AuthorLabel" type="Label" parent="MetadataContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.78, 0.78, 0.827451)
+theme_override_font_sizes/font_size = 8
+text = "author"
+
+[node name="VersionLabel" type="Label" parent="MetadataContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78039217, 0.78039217, 0.78039217, 0.827451)
+theme_override_font_sizes/font_size = 8
+text = "0.0.1"
 
 [node name="SceneTransitionComponent" parent="." instance=ExtResource("2_ekxnf")]
 layout_mode = 1

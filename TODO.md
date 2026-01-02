@@ -1,12 +1,12 @@
 # Milestones
 
 [] Main Menu
-- Play Button
-- Settings Button (does nothing)
+x Play Button
+x Settings Button (does nothing)
 - Credits Button
-- Quit Button
-- Version Number
-- Author (me)
+x Quit Button
+x Version Number
+x Author (me)
 
 [] In Game Shop
 - Open using SPACE
