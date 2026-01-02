@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt0yin3gghxn5"]
+[gd_scene load_steps=3 format=3 uid="uid://cp7bikbgommx2"]
 
-[ext_resource type="Script" uid="uid://dtoiseg4g1807" path="res://scripts/lose_screen.gd" id="1_uglf1"]
-[ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_1n1m7"]
+[ext_resource type="Script" uid="uid://dxfwv1jb7xl14" path="res://scripts/win_screen.gd" id="1_erk2x"]
+[ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_2l6cc"]
 
-[node name="LoseScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp")]
-script = ExtResource("1_uglf1")
+[node name="WinScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp")]
+script = ExtResource("1_erk2x")
 wave_label = NodePath("VBoxContainer/WaveLabel")
 time_label = NodePath("VBoxContainer/TimeLabel")
 scene_transition_cmp = NodePath("SceneTransitionComponent")
@@ -21,9 +21,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 168.0
+offset_left = 200.0
 offset_top = 96.0
-offset_right = 472.0
+offset_right = 440.0
 offset_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -32,7 +32,7 @@ alignment = 1
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 56
-text = "Game Over"
+text = "WINNER!"
 
 [node name="WaveLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -42,6 +42,6 @@ text = "        Wave: 1"
 layout_mode = 2
 text = "        Time: 323 s"
 
-[node name="SceneTransitionComponent" parent="." instance=ExtResource("2_1n1m7")]
+[node name="SceneTransitionComponent" parent="." instance=ExtResource("2_2l6cc")]
 type = 1
-color = Color(0.7411765, 0, 0, 1)
+color = Color(0.09803922, 0.8784314, 0.1764706, 1)
