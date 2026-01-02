@@ -10,12 +10,10 @@ shader_parameter/progress = 0.0
 shader_parameter/screen_size = Vector2(640, 360)
 
 [node name="SceneTransitionComponent" type="ColorRect" node_paths=PackedStringArray("delay_timer")]
+visible = false
 material = SubResource("ShaderMaterial_dcyy1")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 640.0
+offset_bottom = 360.0
 script = ExtResource("1_508db")
 delay_timer = NodePath("DelayTimer")
 

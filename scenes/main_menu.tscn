@@ -1,22 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2rqltxcirhq2"]
+[gd_scene load_steps=6 format=3 uid="uid://d2rqltxcirhq2"]
 
 [ext_resource type="Script" uid="uid://2flmpw75b23s" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://bu5agmlvxhed6" path="res://scenes/game.tscn" id="2_wu84c"]
+[ext_resource type="Script" uid="uid://b0w273un2oqg2" path="res://scripts/credits_section.gd" id="3_8ln24"]
 [ext_resource type="AudioStream" uid="uid://lx8sfyjmplsx" path="res://assets/sfx/Feral Angel Waltz .mp3" id="3_bqqt6"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("play_btn", "settings_btn", "credits_btn", "quit_btn", "scene_transition_cmp", "game_scene_transition_cmp", "author_label", "version_label")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("scene_transition_cmp", "game_scene_transition_cmp", "main_section", "credits_section", "author_label", "version_label", "play_btn", "settings_btn", "credits_btn", "quit_btn", "credits_scroll_container", "credits_return_btn")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_l6cm7")
-play_btn = NodePath("MainContainer/ButtonsContainer/PlayButton")
-settings_btn = NodePath("MainContainer/ButtonsContainer/SettingsButton")
-credits_btn = NodePath("MainContainer/ButtonsContainer/CreditsButton")
-quit_btn = NodePath("MainContainer/ButtonsContainer/QuitButton")
 scene_transition_cmp = NodePath("SceneTransitionComponent")
 game_scene_transition_cmp = NodePath("GameSceneTransitionComponent")
-author_label = NodePath("MetadataContainer/AuthorLabel")
-version_label = NodePath("MetadataContainer/VersionLabel")
+main_section = NodePath("MainSection")
+credits_section = NodePath("CreditsSection")
+author_label = NodePath("MainSection/MetadataContainer/AuthorLabel")
+version_label = NodePath("MainSection/MetadataContainer/VersionLabel")
+play_btn = NodePath("MainSection/MainContainer/ButtonsContainer/PlayButton")
+settings_btn = NodePath("MainSection/MainContainer/ButtonsContainer/SettingsButton")
+credits_btn = NodePath("MainSection/MainContainer/ButtonsContainer/CreditsButton")
+quit_btn = NodePath("MainSection/MainContainer/ButtonsContainer/QuitButton")
+credits_scroll_container = NodePath("CreditsSection/VBoxContainer/ScrollContainer")
+credits_return_btn = NodePath("CreditsSection/VBoxContainer/ReturnButton")
 game_scene = ExtResource("2_wu84c")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -26,7 +31,12 @@ offset_bottom = 360.0
 color = Color(0.021044428, 0.009002825, 0.06439079, 1)
 metadata/_edit_lock_ = true
 
-[node name="MainContainer" type="VBoxContainer" parent="."]
+[node name="MainSection" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainContainer" type="VBoxContainer" parent="MainSection"]
 layout_mode = 0
 offset_left = 164.5
 offset_top = 51.0
@@ -34,47 +44,47 @@ offset_right = 475.5
 offset_bottom = 347.0
 theme_override_constants/separation = 50
 
-[node name="Title" type="Label" parent="MainContainer"]
+[node name="TitleLabel" type="Label" parent="MainSection/MainContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Wave 3.0"
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="MainContainer"]
+[node name="ButtonsContainer" type="VBoxContainer" parent="MainSection/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 9
 
-[node name="PlayButton" type="Button" parent="MainContainer/ButtonsContainer"]
+[node name="PlayButton" type="Button" parent="MainSection/MainContainer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../SettingsButton")
 focus_next = NodePath("../SettingsButton")
 focus_previous = NodePath("../QuitButton")
-text = "PLAY"
+text = "Play"
 
-[node name="SettingsButton" type="Button" parent="MainContainer/ButtonsContainer"]
+[node name="SettingsButton" type="Button" parent="MainSection/MainContainer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../PlayButton")
 focus_neighbor_bottom = NodePath("../CreditsButton")
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../PlayButton")
-text = "SETTINGS"
+text = "Settings"
 
-[node name="CreditsButton" type="Button" parent="MainContainer/ButtonsContainer"]
+[node name="CreditsButton" type="Button" parent="MainSection/MainContainer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../SettingsButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../SettingsButton")
-text = "CREDITS"
+text = "Credits"
 
-[node name="QuitButton" type="Button" parent="MainContainer/ButtonsContainer"]
+[node name="QuitButton" type="Button" parent="MainSection/MainContainer/ButtonsContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../CreditsButton")
 focus_next = NodePath("../PlayButton")
 focus_previous = NodePath("../CreditsButton")
-text = "QUIT"
+text = "Quit"
 
-[node name="MetadataContainer" type="VBoxContainer" parent="."]
+[node name="MetadataContainer" type="VBoxContainer" parent="MainSection"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 328.0
@@ -82,17 +92,55 @@ offset_right = 48.0
 offset_bottom = 352.0
 theme_override_constants/separation = 0
 
-[node name="AuthorLabel" type="Label" parent="MetadataContainer"]
+[node name="AuthorLabel" type="Label" parent="MainSection/MetadataContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78, 0.78, 0.78, 0.827451)
 theme_override_font_sizes/font_size = 8
 text = "author"
 
-[node name="VersionLabel" type="Label" parent="MetadataContainer"]
+[node name="VersionLabel" type="Label" parent="MainSection/MetadataContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.78039217, 0.78039217, 0.78039217, 0.827451)
 theme_override_font_sizes/font_size = 8
 text = "0.0.1"
+
+[node name="CreditsSection" type="Control" parent="." node_paths=PackedStringArray("vbox")]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_8ln24")
+vbox = NodePath("VBoxContainer/ScrollContainer/VBoxContainer")
+credits_file = "res://CREDITS.md"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsSection"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 608.0
+offset_bottom = 328.0
+theme_override_constants/separation = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditsSection/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+draw_focus_border = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsSection/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+focus_mode = 2
+
+[node name="ReturnButton" type="Button" parent="CreditsSection/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+text = "Return"
 
 [node name="SceneTransitionComponent" parent="." instance=ExtResource("2_ekxnf")]
 layout_mode = 1
