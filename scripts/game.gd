@@ -24,10 +24,10 @@ func _process(delta: float) -> void:
 		spawn_target_cmp.delete_children()
 	if GameManager.player_stats.is_dead():
 		lose_scene_transition_cmp.transition_out(lose_scene)
-		lose_scene_transition_cmp.update()
+		lose_scene_transition_cmp.update(delta)
 	elif GameManager.game_state.player_won:
 		win_scene_transition_cmp.transition_out(win_scene)
-		win_scene_transition_cmp.update()
+		win_scene_transition_cmp.update(delta)
 
 func _physics_process(delta: float) -> void:
 	player.physics_update(delta)

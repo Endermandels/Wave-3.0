@@ -6,6 +6,7 @@ class_name MainMenu
 @export var settings_btn: Button
 @export var credits_btn: Button
 @export var quit_btn: Button
+@export var scene_transition_cmp: SceneTransitionComponent
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("ui_up") or 
@@ -18,4 +19,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			play_btn.grab_focus()
 
 func _ready() -> void:
-	pass
+	scene_transition_cmp.transition_in()
+
+func _process(delta: float) -> void:
+	scene_transition_cmp.update(delta)

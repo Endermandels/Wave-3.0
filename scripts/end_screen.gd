@@ -11,5 +11,5 @@ func _ready() -> void:
     time_label.text = "Time: %.3f s" % GameManager.game_state.elapsed_time
     scene_transition_cmp.transition_in()
 
-func _process(_delta: float) -> void:
-    scene_transition_cmp.update()
+func _process(delta: float) -> void:
+    scene_transition_cmp.update(delta)

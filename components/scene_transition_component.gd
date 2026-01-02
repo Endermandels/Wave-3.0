@@ -7,9 +7,9 @@ enum TransitionType {
 }
 
 @export_group("Settings")
-@export var speed: float = 10.0
-@export var delay: float = 0.0
-@export var end_transition_volume: float = -20.0
+@export var duration: float = 1.5 ## Seconds to completion
+@export var delay: float = 0.0 ## Seconds to start
+@export var end_transition_volume: float = -20.0 ## Target volume at end of transition
 @export var type: TransitionType = TransitionType.CIRCLE_OUT
 @export var color: Color = Color.BLACK
 
@@ -32,11 +32,11 @@ func _draw() -> void:
 		if progress >= 1:
 			transitioning = false
 
-func update() -> void:
+func update(delta: float) -> void:
 	if not transitioning: return
 	
 	if delay_timer.is_stopped():
-		progress += speed / get_viewport_rect().size.x
+		progress += delta / duration
 	
 	queue_redraw()
 
