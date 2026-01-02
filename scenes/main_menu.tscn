@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2rqltxcirhq2"]
+
+[ext_resource type="Script" uid="uid://2flmpw75b23s" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("play_btn", "settings_btn", "credits_btn", "quit_btn")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_l6cm7")
+play_btn = NodePath("VBoxContainer/VBoxContainer/PlayButton")
+settings_btn = NodePath("VBoxContainer/VBoxContainer/SettingsButton")
+credits_btn = NodePath("VBoxContainer/VBoxContainer/CreditsButton")
+quit_btn = NodePath("VBoxContainer/VBoxContainer/QuitButton")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.021044428, 0.009002825, 0.06439079, 1)
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 164.5
+offset_top = 51.0
+offset_right = 475.5
+offset_bottom = 347.0
+theme_override_constants/separation = 50
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Wave 3.0"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 9
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../SettingsButton")
+focus_next = NodePath("../SettingsButton")
+focus_previous = NodePath("../QuitButton")
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../PlayButton")
+text = "SETTINGS"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../SettingsButton")
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../CreditsButton")
+focus_next = NodePath("../PlayButton")
+focus_previous = NodePath("../CreditsButton")
+text = "QUIT"

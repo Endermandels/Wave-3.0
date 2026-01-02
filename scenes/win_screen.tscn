@@ -4,8 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_2l6cc"]
 [ext_resource type="AudioStream" uid="uid://bhfliosjrdljp" path="res://assets/sfx/Salty Ditty.mp3" id="3_2l6cc"]
 
-[node name="WinScreen" type="Node2D"]
+[node name="WinScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp")]
 script = ExtResource("1_2l6cc")
+wave_label = NodePath("VBoxContainer/WaveLabel")
+time_label = NodePath("VBoxContainer/TimeLabel")
+scene_transition_cmp = NodePath("SceneTransitionComponent")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 640.0
