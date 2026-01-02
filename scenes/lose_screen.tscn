@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt0yin3gghxn5"]
+[gd_scene load_steps=4 format=3 uid="uid://dt0yin3gghxn5"]
 
 [ext_resource type="Script" uid="uid://dtoiseg4g1807" path="res://scripts/lose_screen.gd" id="1_uglf1"]
 [ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_1n1m7"]
+[ext_resource type="AudioStream" uid="uid://wk6m466wun2w" path="res://assets/sfx/Anguish.mp3" id="3_73mov"]
 
 [node name="LoseScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp")]
 script = ExtResource("1_uglf1")
@@ -45,3 +46,9 @@ text = "        Time: 323 s"
 [node name="SceneTransitionComponent" parent="." instance=ExtResource("2_1n1m7")]
 type = 1
 color = Color(0.7411765, 0, 0, 1)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_73mov")
+volume_db = -13.358
+autoplay = true
+parameters/looping = true

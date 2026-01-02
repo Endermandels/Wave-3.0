@@ -9,8 +9,11 @@ class_name Player
 @export var color_rect: ColorRect
 @export var health_bar_cmp: HealthBarComponent
 @export var hurt_sfx: AudioStreamPlayer2D
+@export var death_sfx: AudioStreamPlayer2D
 
 @onready var stats: PlayerStats = GameManager.player_stats
+
+var played_death_sfx: bool = false
 
 func update() -> void:
 	if stats.is_changed():
@@ -19,6 +22,9 @@ func update() -> void:
 	if stats.is_dead():
 		color_rect.hide()
 		health_bar_cmp.hide()
+		if not played_death_sfx:
+			played_death_sfx = true
+			death_sfx.play()
 		return
 	
 	anim_cmp.flash(not hurtbox_cmp.monitoring)

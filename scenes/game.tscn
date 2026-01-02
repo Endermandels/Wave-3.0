@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bu5agmlvxhed6"]
+[gd_scene load_steps=15 format=3 uid="uid://bu5agmlvxhed6"]
 
 [ext_resource type="PackedScene" uid="uid://bpwpw5m7q6su0" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://u6v5i8uns6d5" path="res://scripts/game.gd" id="1_yqjtg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://q0knkowo6ust" path="res://components/spawner_component.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://bwx8xlaq18mdw" path="res://scenes/enemy_spawn_target.tscn" id="7_u5sy4"]
+[ext_resource type="AudioStream" uid="uid://b81uy11v2falg" path="res://assets/sfx/Exhilarate.mp3" id="10_vtaks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
 size = Vector2(658, 20)
@@ -206,3 +207,9 @@ color = Color(0.74, 0, 0, 1)
 [node name="WinSceneTransitionComponent" parent="." instance=ExtResource("7_gee14")]
 delay = 5.0
 color = Color(0.096800014, 0.88, 0.17511995, 1)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_vtaks")
+volume_db = -13.358
+autoplay = true
+parameters/looping = true

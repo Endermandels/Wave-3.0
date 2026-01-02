@@ -11,4 +11,5 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		get_tree().quit()
 
 func update(delta: float) -> void:
+	if player_stats.is_dead(): return
 	game_state.update(delta)
