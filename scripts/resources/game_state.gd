@@ -15,7 +15,7 @@ func update(delta: float) -> void:
     if player_won: return
     if elapsed_time >= wave_length * wave:
         next_wave()
-    elapsed_time += delta
+    elapsed_time = clampf(elapsed_time + delta, 0, waves_to_win * wave_length)
 
 func next_wave() -> void:
     wave += 1
