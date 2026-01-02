@@ -8,6 +8,8 @@ class_name MovementComponent
 @export var can_bounce: bool = true
 @export var motor: bool = false ## When selected, this component acts as a motor
 
+var collision_info: KinematicCollision2D = null
+
 func init_velocity(body: CharacterBody2D) -> void:
 	body.velocity = body.global_position.direction_to(GameManager.game_state.player_pos) * start_speed
 
@@ -20,7 +22,7 @@ func handle_movement(body: CharacterBody2D, dir: Vector2, delta: float) -> void:
 	body.velocity = body.velocity.lerp(dir * speed, acceleration)
 
 	# Movement
-	var collision_info = body.move_and_collide(body.velocity * delta)
+	collision_info = body.move_and_collide(body.velocity * delta)
 
 	# Collision
 	if collision_info and can_bounce:

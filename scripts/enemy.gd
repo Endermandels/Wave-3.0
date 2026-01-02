@@ -5,6 +5,7 @@ class_name Enemy
 @export var movement_cmp: MovementComponent
 @export var enable_collision_timer: Timer
 @export var collision_shape: CollisionShape2D
+@export var wall_collision_sfx: AudioStreamPlayer2D
 
 @export_group("Resources")
 @export var enemy_stats: EnemyStats
@@ -20,6 +21,9 @@ func update() -> void:
 
 func physics_update(delta: float) -> void:
 	movement_cmp.handle_motor_movement(self, delta)
+	if movement_cmp.collision_info and not wall_collision_sfx.playing:
+		wall_collision_sfx.pitch_scale = randf_range(0.8, 1.2)
+		wall_collision_sfx.play()
 
 func _load_stats() -> void:
 	if not enemy_stats:

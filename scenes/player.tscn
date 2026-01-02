@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpwpw5m7q6su0"]
+[gd_scene load_steps=15 format=3 uid="uid://bpwpw5m7q6su0"]
 
 [ext_resource type="Script" uid="uid://ds3s4qsxqitka" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://dlxwwk4hv7cw" path="res://components/input_component.tscn" id="2_qhqgy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dg0dekwbnwyyf" path="res://components/hurtbox_component.tscn" id="5_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://crugu1mqjmi3p" path="res://components/animation_component.tscn" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://bgftd3bhtyb46" path="res://components/health_bar_component.tscn" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://dcivrjej65dvx" path="res://assets/sfx/hitHurt.wav" id="8_smehm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tuyoq"]
 shader = ExtResource("2_qlg0r")
@@ -57,7 +58,7 @@ _data = {
 &"flash": SubResource("Animation_tuyoq")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_cmp", "movement_cmp", "anim_cmp", "hurtbox_cmp", "color_rect", "health_bar_cmp")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_cmp", "movement_cmp", "anim_cmp", "hurtbox_cmp", "color_rect", "health_bar_cmp", "hurt_sfx")]
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_g2els")
@@ -67,6 +68,7 @@ anim_cmp = NodePath("AnimationComponent")
 hurtbox_cmp = NodePath("HurtboxComponent")
 color_rect = NodePath("ColorRect")
 health_bar_cmp = NodePath("HealthBarComponent")
+hurt_sfx = NodePath("HurtSFX")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_tuyoq")
@@ -107,3 +109,6 @@ offset_left = -9.0
 offset_top = 11.0
 offset_right = 9.0
 offset_bottom = 13.0
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_smehm")

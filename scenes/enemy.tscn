@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbnap2wejof4d"]
+[gd_scene load_steps=9 format=3 uid="uid://cbnap2wejof4d"]
 
 [ext_resource type="Script" uid="uid://drbfxu305aa37" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://cnb7q88q70uvy" path="res://scripts/resources/enemy_stats.gd" id="2_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://dxa78ih8w5531" path="res://components/movement_component.tscn" id="3_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://lleffq2kjf0s" path="res://components/hitbox_component.tscn" id="4_5uy6h"]
+[ext_resource type="AudioStream" uid="uid://203ygfeigyyk" path="res://assets/sfx/laserShoot.wav" id="5_c4w8v"]
 
 [sub_resource type="Resource" id="Resource_4ra3w"]
 script = ExtResource("2_4ra3w")
@@ -15,13 +16,14 @@ size = Vector2(8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
 size = Vector2(8, 8)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("movement_cmp", "enable_collision_timer", "collision_shape")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("movement_cmp", "enable_collision_timer", "collision_shape", "wall_collision_sfx")]
 collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_7p1mj")
 movement_cmp = NodePath("MovementComponent")
 enable_collision_timer = NodePath("EnableCollisionTimer")
 collision_shape = NodePath("CollisionShape2D")
+wall_collision_sfx = NodePath("WallCollisionSFX")
 enemy_stats = SubResource("Resource_4ra3w")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -54,3 +56,7 @@ motor = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_c4w8v")
+
+[node name="WallCollisionSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_c4w8v")
+volume_db = -12.117
