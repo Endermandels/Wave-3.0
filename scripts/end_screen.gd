@@ -1,5 +1,5 @@
 extends Node2D
-class_name LoseScreen
+class_name EndScreen
 
 @export_group("Internal Nodes")
 @export var wave_label: Label
@@ -7,8 +7,8 @@ class_name LoseScreen
 @export var scene_transition_cmp: SceneTransitionComponent
 
 func _ready() -> void:
-    wave_label.text = "Wave: %d" % GameManager.game_state.wave
-    time_label.text = "Time: %.3f" % GameManager.game_state.elapsed_time
+    wave_label.text = "Waves Survived: %d" % (GameManager.game_state.wave - 1)
+    time_label.text = "Time: %.3f s" % GameManager.game_state.elapsed_time
     scene_transition_cmp.transition_in()
 
 func _process(_delta: float) -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dt0yin3gghxn5"]
 
-[ext_resource type="Script" uid="uid://dtoiseg4g1807" path="res://scripts/lose_screen.gd" id="1_uglf1"]
+[ext_resource type="Script" uid="uid://dtoiseg4g1807" path="res://scripts/end_screen.gd" id="1_uglf1"]
 [ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_1n1m7"]
 [ext_resource type="AudioStream" uid="uid://wk6m466wun2w" path="res://assets/sfx/Anguish.mp3" id="3_73mov"]
 
