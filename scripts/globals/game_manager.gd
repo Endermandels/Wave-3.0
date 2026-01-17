@@ -15,3 +15,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func update(delta: float) -> void:
 	if player_stats.is_dead(): return
 	game_state.update(delta)
+
+func new_game() -> void:
+	game_state.reset()
+	player_stats.reset()

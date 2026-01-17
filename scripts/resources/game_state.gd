@@ -27,3 +27,8 @@ func is_new_wave() -> bool:
     var res = new_wave
     new_wave = false
     return res
+
+func reset() -> void:
+    wave = 1
+    elapsed_time = 0.0
+    player_won = false

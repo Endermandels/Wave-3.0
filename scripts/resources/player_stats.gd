@@ -24,3 +24,7 @@ func take_dmg(amount: int) -> void:
 
 func is_dead() -> bool:
 	return not alive
+
+func reset() -> void:
+	hp = max_hp
+	alive = true

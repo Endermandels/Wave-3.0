@@ -16,6 +16,9 @@ var LOSE_SCENE: PackedScene
 @export_file_path("*.tscn") var win_scene: String
 @export_file_path("*.tscn") var lose_scene: String
 
+func _enter_tree() -> void:
+	GameManager.new_game()
+
 func _ready() -> void:
 	WIN_SCENE = load(win_scene)
 	LOSE_SCENE = load(lose_scene)
