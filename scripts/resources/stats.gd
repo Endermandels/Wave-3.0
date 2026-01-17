@@ -3,6 +3,10 @@ class_name Stats
 
 var stats_changed: bool = false
 
+@export_group("Rendering")
+@export var size: Vector2 = Vector2(8, 8) ## Size in pixels
+@export var color: Color = Color.WHITE
+
 @export_group("Movement")
 @export_range(0, 1) var acceleration: float = 0.2:
 	set(val):

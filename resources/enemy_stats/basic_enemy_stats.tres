@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://dj5oc6jk5uq8d"]
 
-[ext_resource type="Script" uid="uid://cnb7q88q70uvy" path="res://scripts/resources/enemy_stats.gd" id="1_n2w4q"]
+[ext_resource type="Script" uid="uid://cnb7q88q70uvy" path="res://scripts/resources/enemy_stats.gd" id="1_rk6f4"]
 
 [resource]
 resource_local_to_scene = true
-script = ExtResource("1_n2w4q")
+script = ExtResource("1_rk6f4")
 dmg = 10
+color = Color(1, 0, 0, 1)
 start_speed = 300.0
 metadata/_custom_type_script = "uid://cnb7q88q70uvy"

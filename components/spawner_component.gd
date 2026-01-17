@@ -30,7 +30,9 @@ func _spawn() -> void:
 	var rnd = randf()
 	var spawned
 	
-	if not spawnable_scene_probabilities or spawnable_scene_probabilities.size() < 1:
+	if (not spawnable_scene_probabilities or 
+			spawnable_scene_probabilities.size() < 1 or 
+			spawnable_scenes.size() != spawnable_scene_probabilities.size()):
 		spawned = spawnable_scenes.pick_random().instantiate()
 	else:
 		var i = 0

@@ -1,12 +1,20 @@
 extends CharacterBody2D
 class_name Enemy
 
+const ENEMY_STATS: Array = [
+	[0.8, preload("res://resources/enemy_stats/basic_enemy_stats.tres")],
+	[0.1, preload("res://resources/enemy_stats/big_enemy_stats.tres")],
+	[0.1, preload("res://resources/enemy_stats/fast_enemy_stats.tres")],
+]
+
 @export_group("Internal Nodes")
 @export var movement_cmp: MovementComponent
 @export var enable_collision_timer: Timer
 @export var collision_shape: CollisionShape2D
 @export var wall_collision_sfx: AudioStreamPlayer2D
 @export var hitbox_cmp: HitboxComponent
+@export var hitbox_collision_shape: CollisionShape2D
+@export var color_rect: ColorRect
 
 @export_group("Resources")
 @export var enemy_stats: EnemyStats
@@ -27,11 +35,30 @@ func physics_update(delta: float) -> void:
 		wall_collision_sfx.play()
 
 func _load_stats() -> void:
+	var rnd = randf()
+
+	for info in ENEMY_STATS:
+		var prob = info[0]
+		var stats = info[1]
+		if rnd <= prob:
+			enemy_stats = stats
+			break
+		rnd -= prob
+	
 	if not enemy_stats:
-		push_warning("[%s] Missing Enemy Stats" % self.name)
-		return
+		enemy_stats = ENEMY_STATS[0][1]
 	
 	movement_cmp.start_speed = enemy_stats.start_speed
 	movement_cmp.speed = enemy_stats.speed
 	movement_cmp.acceleration = enemy_stats.acceleration
 	hitbox_cmp.dmg = enemy_stats.dmg
+	color_rect.color = enemy_stats.color
+	color_rect.size = enemy_stats.size
+	color_rect.position = -enemy_stats.size / 2
+	
+	var rect := RectangleShape2D.new()
+	rect.size = enemy_stats.size
+	collision_shape.shape = rect
+	hitbox_collision_shape.shape = rect
+	if enemy_stats.border_delay > 0:
+		enable_collision_timer.start(enemy_stats.border_delay)
