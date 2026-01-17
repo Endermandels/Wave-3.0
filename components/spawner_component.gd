@@ -8,7 +8,8 @@ class_name SpawnerComponent
 @export var spawn_target: SpawnTargetComponent
 
 @export_group("Resources")
-@export var spawnable_scene: PackedScene
+@export var spawnable_scenes: Array[PackedScene]
+@export var spawnable_scene_probabilities: Array[float]
 
 var elapsed_time: float = 0.0
 
@@ -25,7 +26,22 @@ func _spawn() -> void:
 		return
 
 	var spawn_point = spawn_points.pick_random()
-	var spawned = spawnable_scene.instantiate()
+
+	var rnd = randf()
+	var spawned
+	
+	if not spawnable_scene_probabilities or spawnable_scene_probabilities.size() < 1:
+		spawned = spawnable_scenes.pick_random().instantiate()
+	else:
+		var i = 0
+		for prob in spawnable_scene_probabilities:
+			if rnd <= prob:
+				spawned = spawnable_scenes[i].instantiate()
+				break
+			i += 1
+			rnd -= prob 
+		if not spawned:
+			spawned = spawnable_scenes[0].instantiate()
 	spawned.global_position = spawn_point.global_position
 	spawn_target.spawn(spawned)
 		

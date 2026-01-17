@@ -6,6 +6,7 @@ class_name Enemy
 @export var enable_collision_timer: Timer
 @export var collision_shape: CollisionShape2D
 @export var wall_collision_sfx: AudioStreamPlayer2D
+@export var hitbox_cmp: HitboxComponent
 
 @export_group("Resources")
 @export var enemy_stats: EnemyStats
@@ -33,3 +34,4 @@ func _load_stats() -> void:
 	movement_cmp.start_speed = enemy_stats.start_speed
 	movement_cmp.speed = enemy_stats.speed
 	movement_cmp.acceleration = enemy_stats.acceleration
+	hitbox_cmp.dmg = enemy_stats.dmg

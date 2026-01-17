@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bu5agmlvxhed6"]
+[gd_scene load_steps=14 format=3 uid="uid://bu5agmlvxhed6"]
 
 [ext_resource type="PackedScene" uid="uid://bpwpw5m7q6su0" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://u6v5i8uns6d5" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://vcrxyguctdxh" path="res://scenes/hud.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://cbnap2wejof4d" path="res://scenes/enemy.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cbnap2wejof4d" path="res://scenes/enemies/enemy.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dg47nfpoqjn0c" path="res://scenes/enemies/big_enemy.tscn" id="6_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://q0knkowo6ust" path="res://components/spawner_component.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://bwx8xlaq18mdw" path="res://scenes/enemy_spawn_target.tscn" id="7_u5sy4"]
@@ -81,7 +82,8 @@ shape = SubResource("RectangleShape2D_iywne")
 
 [node name="SpawnerComponent" parent="." node_paths=PackedStringArray("spawn_target") instance=ExtResource("6_p57ef")]
 spawn_target = NodePath("../EnemySpawnTarget")
-spawnable_scene = ExtResource("4_lbhrr")
+spawnable_scenes = Array[PackedScene]([ExtResource("4_lbhrr"), ExtResource("6_0tnpc")])
+spawnable_scene_probabilities = Array[float]([0.8, 0.2])
 
 [node name="Node2D" type="Node2D" parent="SpawnerComponent"]
 position = Vector2(0, -64)
