@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://cutjslcttcs4n"]
+
+[ext_resource type="Script" uid="uid://cnb7q88q70uvy" path="res://scripts/resources/enemy_stats.gd" id="1_f6kiw"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_f6kiw")
+dmg = 5
+acceleration = 0.3
+speed = 500.0
+start_speed = 500.0
+metadata/_custom_type_script = "uid://cnb7q88q70uvy"

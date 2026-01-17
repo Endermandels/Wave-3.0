@@ -41,6 +41,7 @@ color = Color(0, 0.21216679, 0.67, 1)
 shape = SubResource("RectangleShape2D_4ra3w")
 
 [node name="EnableCollisionTimer" type="Timer" parent="."]
+wait_time = 1.541
 one_shot = true
 autostart = true
 
@@ -49,6 +50,8 @@ start_speed = 300.0
 motor = true
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_e8fq7")]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_c4w8v")

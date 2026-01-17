@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbnap2wejof4d"]
+[gd_scene load_steps=8 format=3 uid="uid://cmkp4bko1ot5r"]
 
-[ext_resource type="Script" uid="uid://drbfxu305aa37" path="res://scripts/enemy.gd" id="1_7p1mj"]
-[ext_resource type="Resource" uid="uid://dj5oc6jk5uq8d" path="res://resources/stats/basic_enemy_stats.tres" id="2_lu5c6"]
-[ext_resource type="PackedScene" uid="uid://dxa78ih8w5531" path="res://components/movement_component.tscn" id="3_4ra3w"]
-[ext_resource type="PackedScene" uid="uid://lleffq2kjf0s" path="res://components/hitbox_component.tscn" id="4_5uy6h"]
-[ext_resource type="AudioStream" uid="uid://203ygfeigyyk" path="res://assets/sfx/laserShoot.wav" id="5_c4w8v"]
+[ext_resource type="Script" uid="uid://drbfxu305aa37" path="res://scripts/enemy.gd" id="1_ugc25"]
+[ext_resource type="Resource" uid="uid://cutjslcttcs4n" path="res://resources/stats/fast_enemy_stats.tres" id="2_ugc25"]
+[ext_resource type="PackedScene" uid="uid://dxa78ih8w5531" path="res://components/movement_component.tscn" id="3_eweki"]
+[ext_resource type="PackedScene" uid="uid://lleffq2kjf0s" path="res://components/hitbox_component.tscn" id="4_h47ow"]
+[ext_resource type="AudioStream" uid="uid://203ygfeigyyk" path="res://assets/sfx/laserShoot.wav" id="5_o3voy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
 size = Vector2(8, 8)
@@ -12,16 +12,16 @@ size = Vector2(8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
 size = Vector2(8, 8)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("movement_cmp", "enable_collision_timer", "collision_shape", "wall_collision_sfx", "hitbox_cmp")]
+[node name="FastEnemy" type="CharacterBody2D" node_paths=PackedStringArray("movement_cmp", "enable_collision_timer", "collision_shape", "wall_collision_sfx", "hitbox_cmp")]
 collision_layer = 0
 motion_mode = 1
-script = ExtResource("1_7p1mj")
+script = ExtResource("1_ugc25")
 movement_cmp = NodePath("MovementComponent")
 enable_collision_timer = NodePath("EnableCollisionTimer")
 collision_shape = NodePath("CollisionShape2D")
 wall_collision_sfx = NodePath("WallCollisionSFX")
 hitbox_cmp = NodePath("HitboxComponent")
-enemy_stats = ExtResource("2_lu5c6")
+enemy_stats = ExtResource("2_ugc25")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -35,7 +35,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.67, 0, 0, 1)
+color = Color(0.67, 0.29033333, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4ra3w")
@@ -45,11 +45,11 @@ wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="MovementComponent" parent="." instance=ExtResource("3_4ra3w")]
+[node name="MovementComponent" parent="." instance=ExtResource("3_eweki")]
 start_speed = 300.0
 motor = true
 
-[node name="HitboxComponent" parent="." instance=ExtResource("4_5uy6h")]
+[node name="HitboxComponent" parent="." instance=ExtResource("4_h47ow")]
 collision_layer = 4
 collision_mask = 2
 
@@ -57,5 +57,5 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_c4w8v")
 
 [node name="WallCollisionSFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_c4w8v")
+stream = ExtResource("5_o3voy")
 volume_db = -12.117
