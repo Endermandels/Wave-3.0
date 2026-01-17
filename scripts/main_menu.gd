@@ -1,6 +1,8 @@
 extends Control
 class_name MainMenu
 
+var GAME_SCENE: PackedScene
+
 @export_group("Internal Nodes")
 @export var scene_transition_cmp: SceneTransitionComponent
 @export var game_scene_transition_cmp: SceneTransitionComponent
@@ -16,14 +18,14 @@ class_name MainMenu
 @export_subgroup("Credits Nodes")
 @export var credits_scroll_container: ScrollContainer
 @export var credits_return_btn: Button
-
 @export_group("Resources")
-@export var game_scene: PackedScene
+@export_file_path("*.tscn") var game_scene: String
 
 var ui_keyboard_navigation: bool = false
 var default_focus: Control = null
 
 func _ready() -> void:
+	GAME_SCENE = load(game_scene)
 	scene_transition_cmp.transition_in()
 	author_label.text = GameManager.meta_data.author
 	version_label.text= GameManager.meta_data.version
@@ -83,7 +85,7 @@ func _process(delta: float) -> void:
 			_on_credits_return_button_pressed()
 
 func _on_play_button_pressed() -> void:
-	game_scene_transition_cmp.transition_out(game_scene)
+	game_scene_transition_cmp.transition_out(GAME_SCENE)
 
 func _on_credits_button_pressed() -> void:
 	main_section.hide()

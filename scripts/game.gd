@@ -1,6 +1,9 @@
 extends Node2D
 class_name Game
 
+var WIN_SCENE: PackedScene
+var LOSE_SCENE: PackedScene
+
 @export_group("Internal Nodes")
 @export var player: Player
 @export var hud: HUD
@@ -9,12 +12,13 @@ class_name Game
 @export var lose_scene_transition_cmp: SceneTransitionComponent
 @export var win_scene_transition_cmp: SceneTransitionComponent
 @export var scene_transition_cmp: SceneTransitionComponent
-
 @export_group("Resources")
-@export var lose_scene: PackedScene
-@export var win_scene: PackedScene
+@export_file_path("*.tscn") var win_scene: String
+@export_file_path("*.tscn") var lose_scene: String
 
 func _ready() -> void:
+	WIN_SCENE = load(win_scene)
+	LOSE_SCENE = load(lose_scene)
 	scene_transition_cmp.transition_in()
 
 func _process(delta: float) -> void:
@@ -29,10 +33,10 @@ func _process(delta: float) -> void:
 	if GameManager.game_state.is_new_wave():
 		spawn_target_cmp.delete_children()
 	if GameManager.player_stats.is_dead():
-		lose_scene_transition_cmp.transition_out(lose_scene)
+		lose_scene_transition_cmp.transition_out(LOSE_SCENE)
 		lose_scene_transition_cmp.update(delta)
 	elif GameManager.game_state.player_won:
-		win_scene_transition_cmp.transition_out(win_scene)
+		win_scene_transition_cmp.transition_out(WIN_SCENE)
 		win_scene_transition_cmp.update(delta)
 
 func _physics_process(delta: float) -> void:

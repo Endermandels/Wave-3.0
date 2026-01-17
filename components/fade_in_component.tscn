@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce7v85a26v0y2"]
+
+[ext_resource type="Script" uid="uid://c331rv3tkdwfj" path="res://components/fade_in_component.gd" id="1_oq1i0"]
+
+[node name="FadeInComponent" type="Node"]
+script = ExtResource("1_oq1i0")
