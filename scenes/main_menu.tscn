@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2rqltxcirhq2"]
+[gd_scene load_steps=6 format=3 uid="uid://d2rqltxcirhq2"]
 
 [ext_resource type="Script" uid="uid://2flmpw75b23s" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_ekxnf"]
 [ext_resource type="Script" uid="uid://b0w273un2oqg2" path="res://scripts/credits_section.gd" id="3_8ln24"]
 [ext_resource type="AudioStream" uid="uid://lx8sfyjmplsx" path="res://assets/sfx/Feral Angel Waltz .mp3" id="3_bqqt6"]
+[ext_resource type="PackedScene" uid="uid://bq7beefkoc5j3" path="res://components/focus_component.tscn" id="5_8ln24"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("scene_transition_cmp", "game_scene_transition_cmp", "main_section", "credits_section", "author_label", "version_label", "play_btn", "settings_btn", "credits_btn", "quit_btn", "credits_scroll_container", "credits_return_btn")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("scene_transition_cmp", "game_scene_transition_cmp", "main_section", "credits_section", "focus_cmpt", "author_label", "version_label", "play_btn", "settings_btn", "credits_btn", "quit_btn", "credits_scroll_container", "credits_return_btn")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_l6cm7")
@@ -13,6 +14,7 @@ scene_transition_cmp = NodePath("SceneTransitionComponent")
 game_scene_transition_cmp = NodePath("GameSceneTransitionComponent")
 main_section = NodePath("MainSection")
 credits_section = NodePath("CreditsSection")
+focus_cmpt = NodePath("FocusComponent")
 author_label = NodePath("MainSection/MetadataContainer/AuthorLabel")
 version_label = NodePath("MainSection/MetadataContainer/VersionLabel")
 play_btn = NodePath("MainSection/MainContainer/ButtonsContainer/PlayButton")
@@ -155,3 +157,7 @@ stream = ExtResource("3_bqqt6")
 volume_db = -6.679
 autoplay = true
 parameters/looping = true
+
+[node name="FocusComponent" parent="." node_paths=PackedStringArray("default_focus") instance=ExtResource("5_8ln24")]
+layout_mode = 0
+default_focus = NodePath("../MainSection/MainContainer/ButtonsContainer/PlayButton")

@@ -1,16 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt0yin3gghxn5"]
+[gd_scene load_steps=6 format=3 uid="uid://dt0yin3gghxn5"]
 
 [ext_resource type="Script" uid="uid://dtoiseg4g1807" path="res://scripts/end_screen.gd" id="1_uglf1"]
 [ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_1n1m7"]
+[ext_resource type="PackedScene" uid="uid://ce7v85a26v0y2" path="res://components/fade_in_component.tscn" id="2_lytqm"]
 [ext_resource type="AudioStream" uid="uid://wk6m466wun2w" path="res://assets/sfx/Anguish.mp3" id="3_73mov"]
+[ext_resource type="PackedScene" uid="uid://bq7beefkoc5j3" path="res://components/focus_component.tscn" id="5_v2sw8"]
 
-[node name="LoseScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp", "main_menu_scene_transition_cmp", "return_btn")]
+[node name="LoseScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp", "main_menu_scene_transition_cmp", "return_btn", "focus_cmpt")]
 script = ExtResource("1_uglf1")
 wave_label = NodePath("VBoxContainer/VBoxContainer/WaveLabel")
 time_label = NodePath("VBoxContainer/VBoxContainer/TimeLabel")
 scene_transition_cmp = NodePath("SceneTransitionComponent")
 main_menu_scene_transition_cmp = NodePath("MainMenuSceneTransitionComponent2")
 return_btn = NodePath("VBoxContainer/ReturnButton")
+focus_cmpt = NodePath("FocusComponent")
 main_menu = "res://scenes/main_menu.tscn"
 
 [node name="Background" type="ColorRect" parent="."]
@@ -55,6 +58,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Return"
 
+[node name="FadeInComponent" parent="VBoxContainer/ReturnButton" node_paths=PackedStringArray("target") instance=ExtResource("2_lytqm")]
+target = NodePath("..")
+
 [node name="SceneTransitionComponent" parent="." instance=ExtResource("2_1n1m7")]
 color = Color(0.93, 0.1209, 0.1209, 1)
 type = 2
@@ -66,3 +72,6 @@ stream = ExtResource("3_73mov")
 volume_db = -13.358
 autoplay = true
 parameters/looping = true
+
+[node name="FocusComponent" parent="." node_paths=PackedStringArray("default_focus") instance=ExtResource("5_v2sw8")]
+default_focus = NodePath("../VBoxContainer/ReturnButton")

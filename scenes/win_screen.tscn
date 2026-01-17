@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp7bikbgommx2"]
+[gd_scene load_steps=6 format=3 uid="uid://cp7bikbgommx2"]
 
 [ext_resource type="Script" uid="uid://dtoiseg4g1807" path="res://scripts/end_screen.gd" id="1_2l6cc"]
 [ext_resource type="PackedScene" uid="uid://cjmh8vgmuqx71" path="res://components/scene_transition_component.tscn" id="2_2l6cc"]
 [ext_resource type="PackedScene" uid="uid://ce7v85a26v0y2" path="res://components/fade_in_component.tscn" id="2_e41g7"]
 [ext_resource type="AudioStream" uid="uid://bhfliosjrdljp" path="res://assets/sfx/Salty Ditty.mp3" id="3_2l6cc"]
+[ext_resource type="PackedScene" uid="uid://bq7beefkoc5j3" path="res://components/focus_component.tscn" id="5_0lrm4"]
 
-[node name="WinScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp", "main_menu_scene_transition_cmp", "return_btn")]
+[node name="WinScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp", "main_menu_scene_transition_cmp", "return_btn", "focus_cmpt")]
 script = ExtResource("1_2l6cc")
 wave_label = NodePath("VBoxContainer/VBoxContainer/WaveLabel")
 time_label = NodePath("VBoxContainer/VBoxContainer/TimeLabel")
 scene_transition_cmp = NodePath("SceneTransitionComponent")
 main_menu_scene_transition_cmp = NodePath("MainMenuSceneTransitionComponent2")
 return_btn = NodePath("VBoxContainer/ReturnButton")
+focus_cmpt = NodePath("FocusComponent")
 main_menu = "res://scenes/main_menu.tscn"
 
 [node name="Background" type="ColorRect" parent="."]
@@ -70,3 +72,6 @@ stream = ExtResource("3_2l6cc")
 volume_db = -13.358
 autoplay = true
 parameters/looping = true
+
+[node name="FocusComponent" parent="." node_paths=PackedStringArray("default_focus") instance=ExtResource("5_0lrm4")]
+default_focus = NodePath("../VBoxContainer/ReturnButton")

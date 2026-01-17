@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq7beefkoc5j3"]
+
+[ext_resource type="Script" uid="uid://s3n817umfd" path="res://components/focus_component.gd" id="1_gphr0"]
+
+[node name="FocusComponent" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_gphr0")
