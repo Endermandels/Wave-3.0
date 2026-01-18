@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dpp7fhwb7o85r" path="res://components/health_bar_component.gd" id="1_26y1n"]
 
-[node name="HealthBarComponent" type="TextureProgressBar" node_paths=PackedStringArray("under_color_rect", "porgress_color_rect")]
+[node name="HealthBarComponent" type="TextureProgressBar" node_paths=PackedStringArray("under_color_rect", "progress_color_rect")]
 offset_right = 100.0
 offset_bottom = 20.0
 script = ExtResource("1_26y1n")
 under_color_rect = NodePath("Under")
-porgress_color_rect = NodePath("Progress")
+progress_color_rect = NodePath("Progress")
 
 [node name="Under" type="ColorRect" parent="."]
 layout_mode = 1

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://c1p7oevrgblm6"]
+
+[ext_resource type="Script" uid="uid://cnb7q88q70uvy" path="res://scripts/resources/enemy_stats.gd" id="1_rd7i1"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_rd7i1")
+dmg = 5
+poison_dmg_per_second = 5
+poison_duration = 5.0
+color = Color(0.9499998, 0, 1, 1)
+speed = 250.0
+start_speed = 250.0
+metadata/_custom_type_script = "uid://cnb7q88q70uvy"

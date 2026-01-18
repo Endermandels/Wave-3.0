@@ -11,11 +11,11 @@ x Author (me)
 
 ## Feb 28
 [] More Enemies
-- Bigger but slower
-- Smaller but faster and less damage
-- Poison but less damage
-- Gravity Slimes (bounce with one of four walls being DOWN)
+x Bigger but slower
+x Smaller but faster and less damage
+x Poison but less damage
 - Follows the player
+- Gravity Slimes (bounce with one of four walls being DOWN)
 
 [] Even More Enemies
 - Deploys bombs in a straight line

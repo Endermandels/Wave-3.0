@@ -16,7 +16,7 @@ var finished: bool = false
 func _ready() -> void:
     target.modulate.a = 0
 
-func _process(delta: float) -> void:
+func update(delta: float) -> void:
     if finished: return
     elapsed_time += delta
     

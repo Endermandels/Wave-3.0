@@ -31,17 +31,27 @@ func update() -> void:
 	health_bar_cmp.set_progress((float(stats.hp) / stats.max_hp) * 100)
 
 func physics_update(delta: float) -> void:
+	var hp_save = stats.hp
+
 	input_cmp.update()
 	movement_cmp.handle_movement(self, input_cmp.input_vector, delta)
 	hurtbox_cmp.physics_update()
+
 	if stats.alive:
 		var hitbox: HitboxComponent = hurtbox_cmp.get_current_hitbox()
 		if hitbox:
-			stats.take_dmg(hitbox.dmg)
-			hurt_sfx.pitch_scale = randf_range(0.8, 1.2)
-			hurt_sfx.play()
+			stats.hit_by(hitbox.enemy_stats)
+	stats.update(delta)
+	if hp_save > stats.hp:
+		hurt_sfx.pitch_scale = randf_range(0.8, 1.2)
+		hurt_sfx.play()
+
 	GameManager.game_state.player_pos = global_position
 
 func _apply_stats() -> void:
 	movement_cmp.speed = stats.speed
 	movement_cmp.acceleration = stats.acceleration
+	if stats.poison_duration > 0:
+		health_bar_cmp.set_color(Color.MAGENTA)
+	else:
+		health_bar_cmp.restore_color()

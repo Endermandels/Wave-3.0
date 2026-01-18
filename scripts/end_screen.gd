@@ -10,6 +10,7 @@ var MAIN_MENU_SCENE: PackedScene
 @export var main_menu_scene_transition_cmp: SceneTransitionComponent
 @export var return_btn: Button
 @export var focus_cmpt: FocusComponent
+@export var fade_in_cmp: FadeInComponent
 @export_group("Resources")
 @export_file_path("*.tscn") var main_menu: String
 
@@ -23,6 +24,7 @@ func _process(delta: float) -> void:
 	focus_cmpt.update()
 	scene_transition_cmp.update(delta)
 	main_menu_scene_transition_cmp.update(delta)
+	fade_in_cmp.update(delta)
 	if return_btn.button_pressed:
 		_on_return_button_pressed()
 	

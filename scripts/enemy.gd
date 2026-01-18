@@ -2,9 +2,10 @@ extends CharacterBody2D
 class_name Enemy
 
 const ENEMY_STATS: Array = [
-	[0.8, preload("res://resources/enemy_stats/basic_enemy_stats.tres")],
+	[0.1, preload("res://resources/enemy_stats/basic_enemy_stats.tres")],
 	[0.1, preload("res://resources/enemy_stats/big_enemy_stats.tres")],
 	[0.1, preload("res://resources/enemy_stats/fast_enemy_stats.tres")],
+	[0.7, preload("res://resources/enemy_stats/poison_enemy_stats.tres")],
 ]
 
 @export_group("Internal Nodes")
@@ -51,7 +52,7 @@ func _load_stats() -> void:
 	movement_cmp.start_speed = enemy_stats.start_speed
 	movement_cmp.speed = enemy_stats.speed
 	movement_cmp.acceleration = enemy_stats.acceleration
-	hitbox_cmp.dmg = enemy_stats.dmg
+	hitbox_cmp.enemy_stats = enemy_stats
 	color_rect.color = enemy_stats.color
 	color_rect.size = enemy_stats.size
 	color_rect.position = -enemy_stats.size / 2

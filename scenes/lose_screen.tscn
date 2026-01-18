@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://wk6m466wun2w" path="res://assets/sfx/Anguish.mp3" id="3_73mov"]
 [ext_resource type="PackedScene" uid="uid://bq7beefkoc5j3" path="res://components/focus_component.tscn" id="5_v2sw8"]
 
-[node name="LoseScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp", "main_menu_scene_transition_cmp", "return_btn", "focus_cmpt")]
+[node name="LoseScreen" type="Node2D" node_paths=PackedStringArray("wave_label", "time_label", "scene_transition_cmp", "main_menu_scene_transition_cmp", "return_btn", "focus_cmpt", "fade_in_cmp")]
 script = ExtResource("1_uglf1")
 wave_label = NodePath("VBoxContainer/VBoxContainer/WaveLabel")
 time_label = NodePath("VBoxContainer/VBoxContainer/TimeLabel")
@@ -14,6 +14,7 @@ scene_transition_cmp = NodePath("SceneTransitionComponent")
 main_menu_scene_transition_cmp = NodePath("MainMenuSceneTransitionComponent2")
 return_btn = NodePath("VBoxContainer/ReturnButton")
 focus_cmpt = NodePath("FocusComponent")
+fade_in_cmp = NodePath("VBoxContainer/ReturnButton/FadeInComponent")
 main_menu = "res://scenes/main_menu.tscn"
 
 [node name="Background" type="ColorRect" parent="."]
