@@ -10,8 +10,8 @@ class_name MovementComponent
 
 var collision_info: KinematicCollision2D = null
 
-func init_velocity(body: CharacterBody2D) -> void:
-	body.velocity = body.global_position.direction_to(GameManager.game_state.player_pos) * start_speed
+func init_velocity(body: CharacterBody2D, dir: Vector2) -> void:
+	body.velocity = dir * start_speed
 
 func handle_motor_movement(body: CharacterBody2D, delta: float) -> void:
 	assert(motor, "Motor must be enabled to handle motor movement")

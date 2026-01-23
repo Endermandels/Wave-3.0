@@ -14,7 +14,7 @@ x Author (me)
 x Bigger but slower
 x Smaller but faster and less damage
 x Poison but less damage
-- Follows the player
+x Follows the player
 - Gravity Slimes (bounce with one of four walls being DOWN)
 
 [] Even More Enemies

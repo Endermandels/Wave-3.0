@@ -24,7 +24,7 @@ const ENEMY_STATS: Array = [
 func _ready() -> void:
 	_load_stats()
 	collision_shape.disabled = true
-	movement_cmp.init_velocity(self)
+	movement_cmp.init_velocity(self, self.global_position.direction_to(GameManager.game_state.player_pos))
 
 func update() -> void:
 	if collision_shape.disabled and enable_collision_timer.is_stopped():
