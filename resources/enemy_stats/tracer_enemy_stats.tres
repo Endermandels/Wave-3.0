@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://yfj7nnxodvmy"]
+
+[ext_resource type="Script" uid="uid://cnb7q88q70uvy" path="res://scripts/resources/enemy_stats.gd" id="1_xavmd"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_xavmd")
+dmg = 5
+follows_player = true
+color = Color(1, 0.56666666, 0, 1)
+speed = 225.0
+start_speed = 225.0
+metadata/_custom_type_script = "uid://cnb7q88q70uvy"

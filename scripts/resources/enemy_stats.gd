@@ -7,6 +7,11 @@ class_name EnemyStats
         stats_changed = true
         dmg = val
 
+@export var follows_player: bool = false:
+    set(val):
+        stats_changed = true
+        follows_player = val
+
 @export var poison_dmg_per_second: int = 0:
     set(val):
         stats_changed = true

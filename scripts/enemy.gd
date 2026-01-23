@@ -5,7 +5,8 @@ const ENEMY_STATS: Array = [
 	[0.1, preload("res://resources/enemy_stats/basic_enemy_stats.tres")],
 	[0.1, preload("res://resources/enemy_stats/big_enemy_stats.tres")],
 	[0.1, preload("res://resources/enemy_stats/fast_enemy_stats.tres")],
-	[0.7, preload("res://resources/enemy_stats/poison_enemy_stats.tres")],
+	[0.1, preload("res://resources/enemy_stats/poison_enemy_stats.tres")],
+	[0.6, preload("res://resources/enemy_stats/tracer_enemy_stats.tres")],
 ]
 
 @export_group("Internal Nodes")
@@ -30,7 +31,10 @@ func update() -> void:
 		collision_shape.disabled = false
 
 func physics_update(delta: float) -> void:
-	movement_cmp.handle_motor_movement(self, delta)
+	if enemy_stats.follows_player:
+		movement_cmp.handle_movement(self, self.global_position.direction_to(GameManager.game_state.player_pos), delta)
+	else:
+		movement_cmp.handle_motor_movement(self, delta)
 	if movement_cmp.collision_info and not wall_collision_sfx.playing:
 		wall_collision_sfx.pitch_scale = randf_range(0.8, 1.2)
 		wall_collision_sfx.play()
@@ -52,7 +56,9 @@ func _load_stats() -> void:
 	movement_cmp.start_speed = enemy_stats.start_speed
 	movement_cmp.speed = enemy_stats.speed
 	movement_cmp.acceleration = enemy_stats.acceleration
+
 	hitbox_cmp.enemy_stats = enemy_stats
+	
 	color_rect.color = enemy_stats.color
 	color_rect.size = enemy_stats.size
 	color_rect.position = -enemy_stats.size / 2
@@ -61,5 +67,6 @@ func _load_stats() -> void:
 	rect.size = enemy_stats.size
 	collision_shape.shape = rect
 	hitbox_collision_shape.shape = rect
+
 	if enemy_stats.border_delay > 0:
 		enable_collision_timer.start(enemy_stats.border_delay)
