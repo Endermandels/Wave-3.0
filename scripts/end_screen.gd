@@ -16,7 +16,7 @@ var MAIN_MENU_SCENE: PackedScene
 
 func _ready() -> void:
 	MAIN_MENU_SCENE = load(main_menu)
-	wave_label.text = "Waves Survived: %d" % (GameManager.game_state.wave - 1)
+	wave_label.text = "Waves Survived: %d" % (GameManager.game_state.wave)
 	time_label.text = "Time: %.3f s" % GameManager.game_state.elapsed_time
 	scene_transition_cmp.transition_in()
 

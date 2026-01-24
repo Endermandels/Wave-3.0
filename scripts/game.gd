@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 		spawner_cmp.update(delta)
 		spawn_target_cmp.update(delta)
 	GameManager.update(delta)
-	if GameManager.game_state.is_new_wave():
+	if GameManager.game_state.is_new_wave() or GameManager.game_state.shop_open or GameManager.game_state.player_won:
 		spawn_target_cmp.delete_children()
 	if GameManager.player_stats.is_dead():
 		lose_scene_transition_cmp.transition_out(LOSE_SCENE)

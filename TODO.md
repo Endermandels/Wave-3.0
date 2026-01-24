@@ -19,9 +19,20 @@ x Gravity Slimes (bounce with one of four walls being DOWN)
 
 ## Feb 28
 [] In Game Shop
-- Open using SPACE
-- Purchase using SPACE
-- Close using X
+- Enemy damage scales over time (longer the game goes on, the more powerful the enemies get)
+- Shop options (randomly selected) slide in on either side of the arena (6 total)
+- To select an option, just hover over it
+- Once an option is selected, it is disabled for that shop period
+- Each option costs a certain amount of time (setting the clock back a bit)
+- - Shield: Reduce incoming damage by half for a period of time
+- - Health: Restore health and cure poison
+- - Health Up: Increase max health
+- - Health Regen: Increase health regen potency
+- - Speed Up: Increase speed
+- - Ice: Slow enemies for the first 5 seconds of next wave
+- - Orbitting Shield: Spawn three squares that circle around the player and each can take a hit (causing invulnerability as usual)
+- - Crowded: More enemies spawn, but time moves faster next wave
+- - Hard Hitting: Enemies do more damage, but time moves faster next wave
 
 [] Even More Enemies
 - Deploys bombs in a straight line
@@ -39,5 +50,6 @@ x Gravity Slimes (bounce with one of four walls being DOWN)
 
 # Things I would like to add at some point
 
+- Better spawn patterns (using all of the same type, custom spawn patterns, etc)
 - Warning indicators for incoming squares
 - Length of waves increases with more upgrades (each upgrade adds a certain number of seconds onto the wave)
