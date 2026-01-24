@@ -6,7 +6,8 @@ const ENEMY_STATS: Array = [
 	[0.1, preload("res://resources/enemy_stats/big_enemy_stats.tres")],
 	[0.1, preload("res://resources/enemy_stats/fast_enemy_stats.tres")],
 	[0.1, preload("res://resources/enemy_stats/poison_enemy_stats.tres")],
-	[0.6, preload("res://resources/enemy_stats/tracer_enemy_stats.tres")],
+	[0.1, preload("res://resources/enemy_stats/tracer_enemy_stats.tres")],
+	[0.5, preload("res://resources/enemy_stats/gravity_enemy_stats.tres")],
 ]
 
 @export_group("Internal Nodes")
@@ -56,6 +57,12 @@ func _load_stats() -> void:
 	movement_cmp.start_speed = enemy_stats.start_speed
 	movement_cmp.speed = enemy_stats.speed
 	movement_cmp.acceleration = enemy_stats.acceleration
+	movement_cmp.gravity_enable = enemy_stats.gravity_enable
+	movement_cmp.gravity_acceleration = enemy_stats.gravity_acceleration
+	if enemy_stats.gravity_dir_random:
+		movement_cmp.gravity_dir = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT].pick_random()
+	else:
+		movement_cmp.gravity_dir = enemy_stats.gravity_dir
 
 	hitbox_cmp.enemy_stats = enemy_stats
 	

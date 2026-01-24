@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://b2qeiby6mbh03"]
+
+[ext_resource type="Script" uid="uid://cnb7q88q70uvy" path="res://scripts/resources/enemy_stats.gd" id="1_4g0hh"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_4g0hh")
+dmg = 10
+gravity_enable = true
+gravity_dir_random = true
+color = Color(0.3499999, 1, 0, 1)
+start_speed = 300.0
+metadata/_custom_type_script = "uid://cnb7q88q70uvy"
