@@ -15,7 +15,7 @@ x Bigger but slower
 x Smaller but faster and less damage
 x Poison but less damage
 x Follows the player
-- Gravity Slimes (bounce with one of four walls being DOWN)
+x Gravity Slimes (bounce with one of four walls being DOWN)
 
 [] Even More Enemies
 - Deploys bombs in a straight line

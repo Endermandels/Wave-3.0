@@ -94,3 +94,4 @@ quit={
 2d_physics/layer_1="Boundary"
 2d_physics/layer_2="PlayerHurtbox"
 2d_physics/layer_3="EnemyHitbox"
+2d_physics/layer_4="ActivateBoundaryDetection"

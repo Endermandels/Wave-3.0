@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbnap2wejof4d"]
+[gd_scene load_steps=9 format=3 uid="uid://cbnap2wejof4d"]
 
 [ext_resource type="Script" uid="uid://drbfxu305aa37" path="res://scripts/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Resource" uid="uid://dj5oc6jk5uq8d" path="res://resources/enemy_stats/basic_enemy_stats.tres" id="2_lu5c6"]
@@ -12,16 +12,21 @@ size = Vector2(8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4w8v"]
 size = Vector2(8, 8)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("movement_cmp", "enable_collision_timer", "collision_shape", "wall_collision_sfx", "hitbox_cmp", "hitbox_collision_shape", "color_rect")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwavj"]
+size = Vector2(8, 8)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("movement_cmp", "collision_shape", "wall_collision_sfx", "hitbox_cmp", "hitbox_collision_shape", "boundary_detection", "boundary_detection_collision_shape", "color_rect")]
 collision_layer = 0
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_7p1mj")
 movement_cmp = NodePath("MovementComponent")
-enable_collision_timer = NodePath("EnableCollisionTimer")
 collision_shape = NodePath("CollisionShape2D")
 wall_collision_sfx = NodePath("WallCollisionSFX")
 hitbox_cmp = NodePath("HitboxComponent")
 hitbox_collision_shape = NodePath("HitboxComponent/CollisionShape2D")
+boundary_detection = NodePath("BoundaryDetection")
+boundary_detection_collision_shape = NodePath("BoundaryDetection/CollisionShape2D")
 color_rect = NodePath("ColorRect")
 enemy_stats = ExtResource("2_lu5c6")
 
@@ -55,6 +60,12 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_c4w8v")
+
+[node name="BoundaryDetection" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryDetection"]
+shape = SubResource("RectangleShape2D_xwavj")
 
 [node name="WallCollisionSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_c4w8v")

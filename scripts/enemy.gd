@@ -11,16 +11,20 @@ const ENEMY_STATS: Array = [
 ]
 
 @export_group("Internal Nodes")
+@export var color_rect: ColorRect
 @export var movement_cmp: MovementComponent
-@export var enable_collision_timer: Timer
-@export var collision_shape: CollisionShape2D
 @export var wall_collision_sfx: AudioStreamPlayer2D
 @export var hitbox_cmp: HitboxComponent
+@export var boundary_detection: Area2D
+@export var collision_shape: CollisionShape2D
 @export var hitbox_collision_shape: CollisionShape2D
-@export var color_rect: ColorRect
+@export var boundary_detection_collision_shape: CollisionShape2D
 
 @export_group("Resources")
 @export var enemy_stats: EnemyStats
+
+var boundary_detected = false
+var no_boundaries = true
 
 func _ready() -> void:
 	_load_stats()
@@ -28,8 +32,23 @@ func _ready() -> void:
 	movement_cmp.init_velocity(self, self.global_position.direction_to(GameManager.game_state.player_pos))
 
 func update() -> void:
-	if collision_shape.disabled and enable_collision_timer.is_stopped():
-		collision_shape.disabled = false
+	if collision_shape.disabled:
+		if entered_arena():
+			collision_shape.disabled = false
+
+func entered_arena() -> bool:
+	if boundary_detected and no_boundaries:
+		return true
+
+	var bodies = boundary_detection.get_overlapping_bodies()
+	no_boundaries = true
+
+	# Collision layer is set to only the boundary bodies
+	if bodies.size() > 0:
+		no_boundaries = false
+		boundary_detected = true
+
+	return false
 
 func physics_update(delta: float) -> void:
 	if enemy_stats.follows_player:
@@ -74,6 +93,4 @@ func _load_stats() -> void:
 	rect.size = enemy_stats.size
 	collision_shape.shape = rect
 	hitbox_collision_shape.shape = rect
-
-	if enemy_stats.border_delay > 0:
-		enable_collision_timer.start(enemy_stats.border_delay)
+	boundary_detection_collision_shape.shape = rect
