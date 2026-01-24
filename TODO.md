@@ -9,13 +9,19 @@ x Quit Button
 x Version Number
 x Author (me)
 
-## Feb 28
-[] More Enemies
+## Feb 28 (Completed Jan 24)
+[x] More Enemies
 x Bigger but slower
 x Smaller but faster and less damage
 x Poison but less damage
 x Follows the player
 x Gravity Slimes (bounce with one of four walls being DOWN)
+
+## Feb 28
+[] In Game Shop
+- Open using SPACE
+- Purchase using SPACE
+- Close using X
 
 [] Even More Enemies
 - Deploys bombs in a straight line
@@ -24,11 +30,6 @@ x Gravity Slimes (bounce with one of four walls being DOWN)
 - Freezes player
 - Sucks all floating objects to it
 - Turns the player rainbow and increases player speed
-
-[] In Game Shop
-- Open using SPACE
-- Purchase using SPACE
-- Close using X
 
 [] Adjustable Settings
 - Controls (keyboard versus mouse)

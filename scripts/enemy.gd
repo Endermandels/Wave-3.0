@@ -1,13 +1,13 @@
 extends CharacterBody2D
 class_name Enemy
 
-const ENEMY_STATS: Array = [
-	[0.1, preload("res://resources/enemy_stats/basic_enemy_stats.tres")],
+const ENEMY_STATS: Array[Array] = [
+	[0.3, preload("res://resources/enemy_stats/basic_enemy_stats.tres")],
 	[0.1, preload("res://resources/enemy_stats/big_enemy_stats.tres")],
-	[0.1, preload("res://resources/enemy_stats/fast_enemy_stats.tres")],
-	[0.1, preload("res://resources/enemy_stats/poison_enemy_stats.tres")],
-	[0.1, preload("res://resources/enemy_stats/tracer_enemy_stats.tres")],
-	[0.5, preload("res://resources/enemy_stats/gravity_enemy_stats.tres")],
+	[0.15, preload("res://resources/enemy_stats/fast_enemy_stats.tres")],
+	[0.05, preload("res://resources/enemy_stats/poison_enemy_stats.tres")],
+	[0.15, preload("res://resources/enemy_stats/tracer_enemy_stats.tres")],
+	[0.15, preload("res://resources/enemy_stats/gravity_enemy_stats.tres")],
 ]
 
 @export_group("Internal Nodes")
