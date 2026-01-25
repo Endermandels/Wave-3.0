@@ -68,6 +68,7 @@ focus_neighbor_top = NodePath("../PlayButton")
 focus_neighbor_bottom = NodePath("../CreditsButton")
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../PlayButton")
+disabled = true
 text = "Settings"
 
 [node name="CreditsButton" type="Button" parent="MainSection/MainContainer/ButtonsContainer"]
